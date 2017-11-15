@@ -7,7 +7,7 @@ import time
 import random
 import tkinter as tk
 import credentials as cd
-kybrd_list_left = ['Gmail']
+kybrd_list_left = ['Gmail','Facebook']
 kybrd_list_right = ['LinkedIn','GitHub']
 browser = None
 
@@ -86,6 +86,17 @@ def githublogin():
     signinButton = browser.find_element_by_name('commit')
     signinButton.click()
 
+def facebooklogin():
+    newclick()
+    usernameStr = cd.face_user
+    passwordStr = cd.face_pass
+    browser.get(('https://www.facebook.com'))
+    username = browser.find_element_by_id('email')
+    username.send_keys(usernameStr)
+    passwordElem = browser.find_element_by_id('pass')
+    passwordElem.send_keys(passwordStr)
+    nextButton = browser.find_element_by_id('loginbutton')
+    nextButton.click()
 
 def newclick():
     count=random.randint(1, 100)
